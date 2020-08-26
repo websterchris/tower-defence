@@ -1,0 +1,31 @@
+{
+  "name": "tower-defence",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/websterchris/tower-defence.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/websterchris/tower-defence/issues"
+  },
+  "homepage": "https://github.com/websterchris/tower-defence#readme",
+  "dependencies": {
+    "pixi.js": "^5.3.3",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
