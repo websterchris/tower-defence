@@ -32,11 +32,11 @@ const setup = () => {
   app.stage.addChild(enemy);
   app.stage.addChild(drawTower(towerPosition.x, towerPosition.y, resources));
 
-  setInterval(() => {
-    const enemy = drawEnemy(resources);
-    addEnemy(createEnemy(enemy));
-    app.stage.addChild(enemy);
-  }, 500);
+  // setInterval(() => {
+  //   const enemy = drawEnemy(resources);
+  //   addEnemy(createEnemy(enemy));
+  //   app.stage.addChild(enemy);
+  // }, 500);
 
   gameLoop();
 };
