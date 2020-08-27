@@ -1,6 +1,8 @@
 let defenders: Defender[] = [];
+import { decreaseBalance } from "./balance";
 
 export const addDefender = (defender: Defender) => {
+  decreaseBalance(50);
   defenders.push(defender);
 };
 

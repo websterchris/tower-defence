@@ -10,9 +10,26 @@
         padding: 0;
         margin: 0;
       }
+
+      .section {
+        display: flex;
+        width: 100%;
+      }
+
+      .controls {
+        background-color: #457b9d;
+        width: 250px;
+      }
     </style>
   </head>
   <body>
+    <section class="section">
+      <div id="canvas"></div>
+      <div id="controls" class="controls">
+        <h4 id="balance">Bank Balance: £<span>100</span></h4>
+      </div>
+    </section>
+
     <script
       type="text/javascript"
       src="http://localhost:9000/bundle.js"

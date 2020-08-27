@@ -12,6 +12,8 @@ const canvas = {
   width: 800,
 };
 
+let balance = 300;
+
 const towerPosition = { x: 40, y: 540 };
 
 const app = new Application({
@@ -27,16 +29,16 @@ const gameLoop = () => {
 const setup = () => {
   app.stage.addChild(drawMap(canvas.width, canvas.height, resources));
   drawGrid(canvas.width, canvas.height, app);
-  const enemy = drawEnemy(resources);
-  addEnemy(createEnemy(enemy));
-  app.stage.addChild(enemy);
+  const enemy = createEnemy(resources);
+  addEnemy(enemy);
+  app.stage.addChild(enemy.sprite);
   app.stage.addChild(drawTower(towerPosition.x, towerPosition.y, resources));
 
-  // setInterval(() => {
-  //   const enemy = drawEnemy(resources);
-  //   addEnemy(createEnemy(enemy));
-  //   app.stage.addChild(enemy);
-  // }, 500);
+  setInterval(() => {
+    const enemy = createEnemy(resources);
+    addEnemy(enemy);
+    app.stage.addChild(enemy.sprite);
+  }, 250);
 
   gameLoop();
 };
@@ -45,8 +47,10 @@ const loadSprites = () => {
   loader
     .add({ name: "tower", url: "assets/cat.png" })
     .add({ name: "map", url: "assets/map.png" })
+    .add({ name: "enemy-1", url: "assets/cat.png" })
+    .add({ name: "enemy-2", url: "assets/enemy-2.png" })
     .load(setup);
 };
 
 loadSprites();
-document.body.appendChild(app.view);
+document.getElementById("canvas").appendChild(app.view);

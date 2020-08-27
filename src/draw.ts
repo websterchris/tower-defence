@@ -68,8 +68,11 @@ export const drawGrid = (
   }
 };
 
-export const drawEnemy = (resources: PIXI.IResourceDictionary) => {
-  const enemy = new Sprite(resources["tower"].texture);
+export const drawEnemy = (
+  resources: PIXI.IResourceDictionary,
+  type: number
+) => {
+  const enemy = new Sprite(resources[`enemy-${type}`].texture);
   enemy.width = 20;
   enemy.height = 20;
   enemy.position.set(60, 0);

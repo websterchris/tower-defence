@@ -1,9 +1,31 @@
 import * as PIXI from "pixi.js";
 import { enemyPath } from "./constants/waypoints";
+import { drawEnemy } from "./draw";
 import { checkIfCanShoot } from "./defenders";
+import { incrementBalance } from "./balance";
+
+interface EnemyType {
+  [key: number]: {
+    life: number;
+    type: number;
+    score: number;
+  };
+}
 
 let enemies: Enemy[] = [];
-const enemySpeed = 10;
+const enemySpeed = 5;
+const enemyTypes: EnemyType = {
+  1: {
+    type: 1,
+    life: 5,
+    score: 25,
+  },
+  2: {
+    type: 2,
+    life: 7,
+    score: 30,
+  },
+};
 
 export const addEnemy = (enemy: Enemy) => {
   enemies.push(enemy);
@@ -11,14 +33,19 @@ export const addEnemy = (enemy: Enemy) => {
 
 export const getEnemies = () => enemies;
 
-export const createEnemy = (sprite: PIXI.Sprite): Enemy => ({
-  life: 5,
-  x: 40,
-  y: 0,
-  movingAxis: "y",
-  waypointIndex: 1,
-  sprite,
-});
+export const createEnemy = (resources: PIXI.IResourceDictionary): Enemy => {
+  const enemyType: number = Math.floor(Math.random() * 2) + 1;
+  const { type, life, score } = enemyTypes[enemyType];
+  return {
+    life,
+    x: 40,
+    y: 0,
+    movingAxis: "y",
+    waypointIndex: 1,
+    sprite: drawEnemy(resources, type),
+    score,
+  };
+};
 
 const moveLeft = (enemy: Enemy) => (enemy.sprite.x -= enemySpeed);
 const moveRight = (enemy: Enemy) => (enemy.sprite.x += enemySpeed);
@@ -58,6 +85,7 @@ const move = (enemy: Enemy) => {
 const enemyDead = (enemy: Enemy) => {
   const alive = enemy.life > 0;
   enemy.sprite.visible = alive;
+  !alive && incrementBalance(enemy.score);
   return alive;
 };
 

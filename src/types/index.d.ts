@@ -11,4 +11,5 @@ interface Enemy {
   movingAxis: "x" | "y";
   waypointIndex: number;
   sprite: PIXI.Sprite;
+  score: number;
 }
