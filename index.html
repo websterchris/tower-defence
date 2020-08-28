@@ -1,38 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tower Defence</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tower Defence</title>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta&display=swap" rel="stylesheet" />
 
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-      }
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
 
-      .section {
-        display: flex;
-        width: 100%;
-      }
+            .section {
+                display: flex;
+                width: 100%;
+            }
 
-      .controls {
-        background-color: #457b9d;
-        width: 250px;
-      }
-    </style>
-  </head>
-  <body>
-    <section class="section">
-      <div id="canvas"></div>
-      <div id="controls" class="controls">
-        <h4 id="balance">Bank Balance: £<span>100</span></h4>
-      </div>
-    </section>
+            .controls {
+                background-color: #457b9d;
+                width: 250px;
+                font-family: 'Lexend Peta', sans-serif;
+                color: white;
+            }
 
-    <script
-      type="text/javascript"
-      src="http://localhost:9000/bundle.js"
-    ></script>
-  </body>
+            .balance {
+                font-size: 14px;
+            }
+
+            .active {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="section">
+            <div id="canvas"></div>
+            <div id="controls" class="controls">
+                <h4 class="balance" id="balance">Bank Balance: £<span></span></h4>
+                <h4 class="balance" id="level">Level:<span></span></h4>
+
+                <h4 class="balance">Defenders<span></span></h4>
+                <ul>
+                    <li id="archer">Archer</li>
+                    <li id="crossbow">Crossbow</li>
+                    <li id="longbow">Longbow</li>
+                    <li id="catapult">Catapult</li>
+                </ul>
+            </div>
+        </section>
+
+        <script type="text/javascript" src="http://localhost:9000/bundle.js"></script>
+    </body>
 </html>
